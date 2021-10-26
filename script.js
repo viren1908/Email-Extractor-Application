@@ -15,9 +15,21 @@ btn.addEventListener("click",function(){
     let shorterExp = /\S+@\S+/g ;
     let emailData = temp.match(shorterExp); 
     
-    console.log(emailData);
-    counter.innerText = "Emails Found : " + emailData.length;
-    outTxt.innerText = emailData;
+    //Removing the Duplicate Emails
+    let holder = [];
+    for(let i = 0; i<emailData.length ; i++){
+      
+        if(holder.indexOf(emailData[i] == -1) ) {
+            holder.push(emailData[i]);
+
+        }
+        
+    }
+    //concerting array element into String 
+    let joinHolder = holder.join(",");
+    //output 
+    counter.innerText = "Emails Found : " + holder.length;
+    outTxt.innerText = joinHolder;
 })  
 
 
